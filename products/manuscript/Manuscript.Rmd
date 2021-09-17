@@ -1,7 +1,7 @@
 ---
-title: "Example Manuscript Template for a Data Analysis Project"
+title: "Characteristics of patients developing Myocarditis post Covid-19 vaccination with Moderna or Pfizer and factors associated with hospitalization and death "
 subtitle: ""
-author: Andreas Handel
+author: Minaz Mawani
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: article
@@ -11,7 +11,7 @@ output:
     number_sections: true
   bookdown::html_document2: 
     toc: false
-bibliography: ../references.bib
+bibliography: ../My Library.bib
 csl: ../apa.csl
 ---
 
@@ -25,19 +25,39 @@ _Write a summary of your project._
 # Introduction 
 
 ## General Background Information
-_Provide enough background on your topic that others can understand the why and how of your analysis_ 
+
+Covid-19 pandemic brought significant morbidity and mortality globally with more than 3 million deaths worldwide. following which efforts were focused on development of effective vaccines in time.In december 2020, the Food and Drug Administration (FDA) issued emergency use authorizations for the Pfizer-BioNTech and Moderna COVID-19 vaccines[@rosner_myocarditis_2021]. 
+Both of these are mRNA vaccines encoding the stabilized prefusion spike glycoprotein of SARS-CoV-2 and demonstrated excellent safety and clinical efficacy profiles in large clinical trials.However, soon after there were reports of myocarditis and pericarditis in mRNA vaccine recipients. These were more common among young men after receiving their 2nd dose. Myocarditis is the inflammation of the heart muscle whereas, pericarditis is an inflammation of the thin tissue surrounding the heart. from there on myocarditis is used to refer to myocarditis, pericarditis or myopericarditis. In June 2021, the advisory committee on immunization practices determined that the benefits of using mRNA COVID-19 vaccines clearly outweigh the risks. a few research studies have been done primarily describing case-reports of myocarditis after mRNA COVID-19 vaccines and some describing the characteristics of participants[@rosner_myocarditis_2021],[@gargano_use_2021]. However, none of the studies have been conducted so far to look at the patient characteristics associated with adverse outcomes such as hospitalization and death. Therefore, the aim of this study is to explore the characteristics of these patients and identify factorts that could be associated with poor outcomes. Finding these answers could help in identifying high risk patients, providing vigilant care and surveillance which could help in preventing adverse outcomes. 
+
 
 ## Description of data and data source
-_Describe what the data is, what it contains, where it is from, etc. Eventually this might be part of a methods section._
+
+This data set was established by the US. Department of Health and Human Services(DHHS), co-administered by the Food and Drug Administration (FDA) and the Centers for Disease Control (CDC), to accept all reports of suspected adverse events after the administration of any US licensed vaccine.VAERS is used to continually monitor reports to determine whether any vaccine or vaccine lot has a higher than expected rate of events.
+
+Health care providers are encouraged to report adverse events, even if they are not certain if it was related to the vaccine. since it is difficult to distinguish whether an adverse event was due to a drug or not. all types of adverse events are reported whether or not related to vaccine. The primary purpose for maintaining the database is to serve as an early warning for adverse events not detected during pre-market testing.
+
+in 2007, the VAERS coding system was converted to an international coding system called MedDRA (Medical Dictionary for Regulatory Activities) that is used globally. It uses key words representing medical conditions described in the case report and converts them to standardized codes. There are more than 17,000 preferred term codes in the system. 
+
+The public dataset comprises of three separate excel files. the first one contains information on demographics such as age, sex, date, symptoms, vaccination date, event onset date and outcomes such as hospitalization, death, disability, recovery, type of facility, diagnostic tests, medications, illnesses and allergies. the second data set contains information on vaccine type, lot, doses administered, route, and site. Third database contains information on symtoms of all adverse events. all databases have one common element which is identification number and it will be used to merge these three data sets. These data sets comprises of individuals receiving Pfizer or Moderna Covid-19 vaccine during January 1 to Sept 3, 2021. a total of 495514 individuals are included in the data set. 
+
+Following links provide additional information about the data set. https://vaers.hhs.gov/data/datasets.html? and https://vaers.hhs.gov/docs/VAERSDataUseGuide_November2020.pdf
+
 
 ## Questions/Hypotheses to be addressed
-_State the research questions you plan to answer with this analysis._
 
+Following are the research questions that will be answered through this project
 
+1) What are the characteristics of individuals developing myocarditis post Pfizer or Moderna Covid-19 vaccines
+
+2) what are the factors associated with hospitalization and death among patients developing myocarditis post covid-19 vaccines. 
 
 # Methods and Results
 
 _In most research papers, results and methods are separate. You can combine them here if you find it easier. You are also welcome to structure things such that those are separate sections._
+
+# Outcomes
+
+The specific outcomes would be hospitalization and death. 
 
 
 ## Data aquisition
@@ -45,6 +65,10 @@ _As applicable, explain where and how you got the data. If you directly import t
 
 ## Data import and cleaning
 _Write code that reads in the file and cleans it so it's ready for analysis. Since this will be fairly long code for most datasets, it might be a good idea to have it in one or several R scripts. If that is the case, explain here briefly what kind of cleaning/processing you do, and provide more details and well documented code somewhere (e.g. as supplement in a paper). All materials, including files that contain code, should be commented well so everyone can follow along._
+
+# Analysis Plan 
+
+Descriptive analysis will be done. mean with standard deviation or median with interquartile range will be reported for all quantitative variables depending on distribution. Frequencies with percentages will be reported for all categorical variables. for comparing quantitative variables across categories of exposure or outcomes, independent sample t-test will be used. for categorical variables chi square test will be used for comparison. a p-value of <0.05 will be considered as statistically significant. univariate logistic regression will be done to identify factors associated with hospitalization and death. unadjusted odds ratios with 95% confidence intervals will be reported. all biologically plausible confounders and effect modifiers will be identified and tested in the model.Correlations will be assessed between all variables. if correlation between two independent variables is >0.8 or higher than the correlation between independent and outcome variables, multicollinearity will be considered and one of the variables will be considered to drop. for multivariate model, biological based model will be developed considering potential confounders and effect modifiers in different combinations. Adjusted odds ratios with 95% confidence intervals will be reported
 
 
 ## Exploratory analysis
@@ -95,8 +119,7 @@ _Discuss what you perceive as strengths and limitations of your analysis._
 _What are the main take-home messages?_
 
 _Include citations in your Rmd file using bibtex, the list of references will automatically be placed at the end_
-
-This paper [@Leek2015a] discusses types of analyses. 
+ 
 
 Note that this cited reference will show up at the end of the document, the reference formatting is determined by the CSL file specified in the YAML header. Many more style files for almost any journal [are available](https://www.zotero.org/styles). You also specify the location of your bibtex reference file in the YAML. You can call your reference file anything you like, I just used the generic word `references.bib` but giving it a more descriptive name is probably better.
 
